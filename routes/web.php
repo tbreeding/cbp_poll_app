@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PollsController@index');
+
+// Route::get('/polls/{id}', 'PollController@index');
+Route::get('/results/{id}', 'PollController@results');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resources([
+    'polls' => 'PollsController',
+    'poll' => 'PolloptionsController'
+]);
+

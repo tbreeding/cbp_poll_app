@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Poll;
 
-class PollsController extends Controller
+class GenericController extends Controller
 {
-    public function index() {
-        
-        return view('polls')->with('polls', Poll::all());
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**
@@ -78,5 +82,3 @@ class PollsController extends Controller
         //
     }
 }
-
-
