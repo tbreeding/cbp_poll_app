@@ -15,7 +15,7 @@
                 <div class="addPoll">
                     <h2>Add a new poll here</h2>
 
-                    <form method="POST" action="http://www.cbp-exercises.test/week%2008/Lesson%2040/hackathon/cbp_poll_app/public/polls">
+                    <form method="POST" action="/polls">
                         Name: <input type="text" name="name" />
                         Description: <textarea name="description"></textarea>
                         <div style="
