@@ -41,7 +41,11 @@ class PollsController extends Controller
      */
     public function show($id)
     {
-        //
+        $polloptions = Poll::selectRaw('polls.*, polloptions.*')
+            ->leftJoin('poll_id, id', '=', 'polloptions.poll_id')
+            ->whereIn('poll_id', $id)
+            ->get();
+        return view('polldetail')->with('poll', $polloptions);
     }
 
     /**

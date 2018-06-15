@@ -19,6 +19,8 @@ class CreatePolloptionsTable extends Migration
             $table->string('name', 255);
             $table->string('choice_style')->nullable();
             $table->timestamps();
+
+
         });
     }
 

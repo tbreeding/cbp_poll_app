@@ -6,7 +6,7 @@
                     <h1>All Polls</h1>
                     @foreach ($polls as $poll)
 
-                        <a href="#"> {{$poll->name}} - {{$poll->description}}</a>
+                        <a href="polls/{{$poll->id}}"> {{$poll->name}} - {{$poll->description}}</a>
 
                     @endforeach
                 </div>
