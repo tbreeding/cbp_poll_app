@@ -34,7 +34,41 @@ class PollsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input['name'] = $request->name;
+        $input['description'] = $request->description;
+        $input['choice_style'] = $request->choice_style;
+        $input['user_id'] = Auth::id();
+
+        $poll = new Poll();
+        $poll->fill($input);
+        $poll->save();
+
+        $po1['poll_id'] = $poll->id;
+        $po2['poll_id'] = $poll->id;
+        $po3['poll_id'] = $poll->id;
+        $po4['poll_id'] = $poll->id;
+
+        $po1['name'] = $request->op_1;
+        $po2['name'] = $request->op_2;
+        $po3['name'] = $request->op_3;
+        $po4['name'] = $request->op_4;
+
+        $po1['choice_style'] = $request->choice_style;
+        $po2['choice_style'] = $request->choice_style;
+        $po3['choice_style'] = $request->choice_style;
+        $po4['choice_style'] = $request->choice_style;
+
+/*        $po1['vote_count'] = $request->voute_count;
+        $po2['vote_count'] = $request->voute_count;
+        $po3['vote_count'] = $request->voute_count;
+        $po4['vote_count'] = $request->voute_count;*/
+
+        Polloption::create($po1);
+        Polloption::create($po2);
+        Polloption::create($po3);
+        Polloption::create($po4);
+
+        return redirect('/polls');
     }
 
     /**
@@ -46,9 +80,13 @@ class PollsController extends Controller
     public function show($id)
     {
         $poll = Poll::find($id);
-        $user = User::find($id);
+        $user = User::find(Auth::id());
         $polloptions = $poll->options;
-        $hasvoted = $user->voted()->where('poll_id', '=', $id)->get();
+        if (($user->voted()->where('poll_id', '=', $id)->get()) == null) {
+            $hasvoted = [];
+        } else {
+            $hasvoted = $user->voted()->where('poll_id', '=', $id)->get();
+        }
         // dd($hasvoted->all());
         if($hasvoted->all()) {
             return view('pollcontent.pollhasvoted', [
