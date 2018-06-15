@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Ride the Poll!</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,13 +19,44 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+            .mainContent {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .pollList {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .addPoll {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+                border: 1px solid black;
+
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            textarea {
+                height: 200px;
+                width: 400px;
+            }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                Ride the Poll!
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -71,7 +102,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="mainContent">
             @yield('content')
         </main>
     </div>
