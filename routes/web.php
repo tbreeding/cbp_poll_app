@@ -20,6 +20,9 @@ Auth::routes();
 
 Route::resources([
     'polls' => 'PollsController',
-    'poll' => 'PolloptionsController'
+    'poll' => 'PollsController'
 ]);
+Route::post('/vote/{poll_id}', 'PollsController@vote');
+
+// Route::get('polls/{id}')
 

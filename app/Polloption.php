@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Polloption extends Model
 {
+    protected $guarded = [];
     public function Poll() {
         return $this->belongsTo('App\Poll');
     }
